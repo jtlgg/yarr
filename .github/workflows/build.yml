@@ -2,7 +2,8 @@ name: build
 
 on:
   push:
-    tags: ['v*', 'test*']
+    branches:
+      '**'
 
 jobs:
   build_macos:
@@ -27,7 +28,7 @@ jobs:
     - name: "Build"
       run: make build_macos
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: macos
         path: _output/macos/yarr.app
@@ -54,7 +55,7 @@ jobs:
     - name: "Build"
       run: make build_windows
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: windows
         path: _output/windows/yarr.exe
@@ -81,7 +82,7 @@ jobs:
     - name: "Build"
       run: make build_linux
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: linux
         path: _output/linux/yarr
